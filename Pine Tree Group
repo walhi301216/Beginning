@@ -64,4 +64,11 @@ move 2.5 1.5 4;
 rename $cylinder[0] "Trunk";
 //Becomes a group of trees!
 
-
+//Important tool: Create a list of all selected objects, and moves a selected object up one
+string $sel[] = `ls -sl`;
+for ($each in $sel){
+  // do something - use $each to identify the objects
+  select $each;
+  move 0 1 0;
+}
+//$each = object you want to select
