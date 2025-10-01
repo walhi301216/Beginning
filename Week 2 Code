@@ -12,3 +12,5 @@ print $calc; // prints the variable i.e the result of the calculation
 
 string $sel[] = `ls -sl`; //creates an array, containing all the objects selected in the scene
 move -r 0 3 0 $sel; //moves all selected objects up 3, relative to their current positions
+
+https://therese3dblog.wordpress.com/wp-content/uploads/2014/08/mel_gui.pdf
