@@ -1,0 +1,11 @@
+string $cubes[] = `polyCube -name "ManyMagiCubes"`; //Creates array and a labelled cube in that array
+rename $cubes[0] "MyMagiCube"; //Renames first variable in array
+
+string $Morecube = "AnotherMagiCube"; // Creates a string Variable
+string $uobstaff[] = {"Pete","Rob","Jason"}; // Creates an array with mutiple variables
+print $uobstaff[1]; // Prints the second variable in the array
+polyCylinder -r 10; // Creates a cylinder with a large radius
+
+int $one = 2; // Creates a Integer Variable
+int $calc = $one * 10; // Creates an integer Variable, based on the result of a calculation including another variable
+print $calc; // prints the variable i.e the result of the calculation
