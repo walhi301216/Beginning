@@ -9,3 +9,6 @@ polyCylinder -r 10; // Creates a cylinder with a large radius
 int $one = 2; // Creates a Integer Variable
 int $calc = $one * 10; // Creates an integer Variable, based on the result of a calculation including another variable
 print $calc; // prints the variable i.e the result of the calculation
+
+string $sel[] = `ls -sl`; //creates an array, containing all the objects selected in the scene
+move -r 0 3 0 $sel; //moves all selected objects up 3, relative to their current positions
