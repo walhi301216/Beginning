@@ -14,3 +14,19 @@ string $sel[] = `ls -sl`; //creates an array, containing all the objects selecte
 move -r 0 3 0 $sel; //moves all selected objects up 3, relative to their current positions
 
 https://therese3dblog.wordpress.com/wp-content/uploads/2014/08/mel_gui.pdf
+
+//button function
+global proc makeCube() (
+//code
+)
+
+// create a window 
+window -title "SimpleUI" -w 250 -h 300 "fmWindow01";
+// define the layout of controls added 
+// to the window. 
+columnLayout;
+// create a couple of buttons 
+button -label "button1"; 
+button -label "button2";
+// show the window we last created 
+showWindow;
