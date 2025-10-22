@@ -1,6 +1,7 @@
 
 global string $Dave[];
 global string $Alice[];
+global int $Check = 0;
 
 // Define a procedure
 global proc CreateDave() {
@@ -47,20 +48,28 @@ global proc RandomRotate() {
 }
 }
 global proc RandomObject() {
+    global int $Check;
     float $random = floor(rand(2 + .5));
     $thing = int($random);
+    if ($Check == 1){
+        delete "New Friend";
+        $Check = 0;
+    }
     if ($thing == 1){
-        polyCube;
+        polyCube -name "New Friend";
+        $Check = 1;
     }
     if ($thing == 2){
-        polyCylinder;
+        polyCylinder -name "New Friend";
+        $Check = 1;
     }
     if ($thing == 0){
-        polySphere;
+        polySphere -name "New Friend";
+        $Check = 1;
     }
 }
 global proc CreateControl() {
-    circle -name "Control";
+    circle -name "Control"; //Unfinished
 }
 
 // Build the window
@@ -76,6 +85,9 @@ columnLayout -adjustableColumn true -rowSpacing 10;
     button -label "Make a New Friend" -command "RandomObject()";
     button -label "I Need Control" -command "CreateControl()";
 setParent ..;
+
+// Show the window
+showWindow WeeTestUI;
 
 // Show the window
 showWindow WeeTestUI;
