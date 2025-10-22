@@ -1,0 +1,81 @@
+
+global string $Dave[];
+global string $Alice[];
+
+// Define a procedure
+global proc CreateDave() {
+    // create dave
+    global string $Dave[]; // Access the global variable
+    $Dave = `polyCube -w 1 -h 1 -d 1 -name "Dave"`;
+}
+// Define a procedure
+global proc MoveDave() {
+    // create dave
+    global string $Dave[]; // Access the global variable
+    select $Dave;
+    move 2 2 2;
+}
+// Define a procedure
+global proc CreateAlice() {
+    // create alice
+    global string $Alice[]; // Access the global variable
+    $Alice = `polySphere -r 1 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1 -name "Alice"`;
+}
+global proc MoveAlice() {
+    
+    global string $Alice[];
+    select $Alice;
+    move -r 0 1;
+}
+global proc FriendGroup() {
+    global string $Alice[];
+    global string $Dave[];
+    select $Dave $Alice;
+    group -name "Friends";
+}
+global proc Rotate() {
+    select Friends;
+    rotate -r 90;
+}
+global proc RandomRotate() {
+    float $random = floor(rand(90 + .5));
+    $thing = int($random);
+    string $sel[] = `ls -sl`;
+    for ($each in $sel){
+      select $each;
+      rotate $thing;
+}
+}
+global proc RandomObject() {
+    float $random = floor(rand(2 + .5));
+    $thing = int($random);
+    if ($thing == 1){
+        polyCube;
+    }
+    if ($thing == 2){
+        polyCylinder;
+    }
+    if ($thing == 0){
+        polySphere;
+    }
+}
+global proc CreateControl() {
+    circle -name "Control";
+}
+
+// Build the window
+window -title "WeeTest" -widthHeight 200 900 WeeTestUI;
+columnLayout -adjustableColumn true -rowSpacing 10;
+    button -label "Where's Dave?" -command "CreateDave()";
+    button -label "Now where's Alice?" -command "CreateAlice()";
+    button -label "Move, Dave" -command "MoveDave()";
+    button -label "You too, Alice" -command "MoveAlice()";
+    button -label "Group up now" -command "FriendGroup()";
+    button -label "Look the other way" -command "Rotate()";
+    button -label "Spin!" -command "RandomRotate()";
+    button -label "Make a New Friend" -command "RandomObject()";
+    button -label "I Need Control" -command "CreateControl()";
+setParent ..;
+
+// Show the window
+showWindow WeeTestUI;
