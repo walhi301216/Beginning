@@ -51,7 +51,7 @@ global proc RandomObject() {
     float $random = floor(rand(2 + .5));
     $thing = int($random);
     if ($Check == 1){
-        delete "New Friend";
+        delete "New_Friend";
         $Check = 0;
     }
     if ($thing == 1){
