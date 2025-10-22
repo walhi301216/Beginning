@@ -1,4 +1,3 @@
-
 global string $Dave[];
 global string $Alice[];
 global int $Check = 0;
@@ -44,7 +43,7 @@ global proc RandomRotate() {
     string $sel[] = `ls -sl`;
     for ($each in $sel){
       select $each;
-      rotate $thing;
+      rotate -r $thing;
 }
 }
 global proc RandomObject() {
@@ -84,10 +83,7 @@ columnLayout -adjustableColumn true -rowSpacing 10;
     button -label "Spin!" -command "RandomRotate()";
     button -label "Make a New Friend" -command "RandomObject()";
     button -label "I Need Control" -command "CreateControl()";
-setParent ..;
-
-// Show the window
-showWindow WeeTestUI;
+setParent;
 
 // Show the window
 showWindow WeeTestUI;
