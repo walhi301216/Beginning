@@ -1,0 +1,26 @@
+//Random House Generator
+//Zakari Azhari
+//Version 1
+
+//Variables
+
+//Must do this thing
+//UI Structure
+//
+//Button One will randomly generate an entire plot, including house, garden etc, each will be placed in a designated zone
+//Button Two, Three and four will randomly cycle through the objects/structures for their particular zone. 
+//
+//Code Specifics
+//Will contain several functions, to be attached to various buttons
+//Function 1 will generate a plot, with designated zones for various types of structures i.e. house, garden prop 1 etc.
+//These zones will be made by outlining boundaries through translate 'coordinates'
+//Function 2, 3 and 4 will cycle through the set props/structures for each individual zone
+
+//Should do this thing
+//Give an option for generate different types of plots (mansion, house sizes)
+//Allow for the easy painting of props and structures
+
+//Could do this thing 
+//Create a row of houses for a street, maybe with a user specified number
+//Create a detailed house with an interior
+//
