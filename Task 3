@@ -1,0 +1,20 @@
+
+global int $Check;
+float $random = floor(rand(2 + .5));
+$thing = int($random);
+if ($Check == 1){
+    delete "New_Friend";
+    $Check = 0;
+}
+if ($thing == 1){
+    polyCube -name "New Friend";
+    $Check = 1;
+}
+if ($thing == 2){
+    polyCylinder -name "New Friend";
+    $Check = 1;
+}
+if ($thing == 0){
+    polySphere -name "New Friend";
+    $Check = 1;
+}
