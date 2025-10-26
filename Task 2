@@ -1,0 +1,52 @@
+
+global int $lower = 0;
+global int $higher = 90;
+global proc RandomRotate() {
+    global int $lower;
+    global int $higher;
+    float $random = floor(rand($lower-$higher + .5));
+    $thing = int($random);
+    string $sel[] = `ls -sl`;
+    for ($each in $sel){
+      select $each;
+      rotate -r $thing;
+    }
+}
+global proc DecreaseLowerRange() {
+    global int $lower;
+    $lower = $lower - 10;
+    print " | The lower range is now ";
+    print $lower;
+}
+global proc IncreaseLowerRange() {
+    global int $lower;
+    $lower = $lower + 10;
+    print " | The lower range is now ";
+    print $lower;
+}
+global proc DecreaseHigherRange() {
+    global int $higher;
+    $higher = $higher - 10;
+    print " | The higher range is now ";
+    print $higher;
+}
+global proc IncreaseHigherRange() {
+    global int $higher;
+    $higher = $higher + 10;
+    print " | The higher range is now ";
+    print $higher;
+}
+
+
+// Build the window
+window -title "WeeTest" -widthHeight 200 900 WeeTestUI;
+columnLayout -adjustableColumn true -rowSpacing 10;
+    button -label "Spin!" -command "RandomRotate()";
+    button -label "Increase the lower range" -command "IncreaseLowerRange()";
+    button -label "Decrease the lower range" -command "DecreaseLowerRange()";
+    button -label "Increase the higher range" -command "IncreaseHigherRange()";
+    button -label "Decrease the higher range" -command "DecreaseHigherRange()";
+setParent;
+
+// Show the window
+showWindow WeeTestUI;
