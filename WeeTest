@@ -70,7 +70,13 @@ global proc RandomObject() {
 global proc CreateControl() {
     circle -name "Control"; //Unfinished
 }
-
+global proc IndividualGroup() {
+    string $select[] = `ls -sl`;
+    for ($each in $select){
+        select $each;
+        group;
+    }
+}
 // Build the window
 window -title "WeeTest" -widthHeight 200 900 WeeTestUI;
 columnLayout -adjustableColumn true -rowSpacing 10;
@@ -83,6 +89,7 @@ columnLayout -adjustableColumn true -rowSpacing 10;
     button -label "Spin!" -command "RandomRotate()";
     button -label "Make a New Friend" -command "RandomObject()";
     button -label "I Need Control" -command "CreateControl()";
+    button -label "You're all groups now!" -command "IndividualGroup()";
 setParent;
 
 // Show the window
