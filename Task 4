@@ -1,0 +1,9 @@
+circle -name "Control";
+addAttr -ln "objScale" -at double -dv 0 |Control;
+setAttr -e-keyable true |Control.objScale;
+
+string $select[] = `ls -sl`;
+for ($each in $select){
+    select $each;
+    group;
+}
