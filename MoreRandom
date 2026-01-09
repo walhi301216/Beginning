@@ -1,0 +1,94 @@
+//Make Random Plot
+global string $blueprints[];
+
+//procedure - make plot base
+global proc buildHouse() {
+    global string $blueprints[];
+    $blueprints = `polyCube -name "Base" -w 18 -h 0.3 -d 18 `;
+    move 0 2 0;
+}
+
+//Cycle House Models
+global string $Houses[];
+
+// Delete any existing window with this name
+if (`window -exists doesEverythingUI`) {
+    deleteUI -window doesEverythingUI;
+}
+
+// Define a procedure
+global proc HouseCycle() {
+    global string $Houses[]; // Access the global variable
+    ;
+}
+
+// Define a procedure
+global proc LiftSign() {
+    global int $Counter = 0; //Abandoned Code
+    global string $PlaneSurface[]; // Access the global variable
+    // LiftSigns
+    string $sel[] = `ls -sl`;
+
+    for ($each in $sel){ 
+        if ($each == $PlaneSurface[0]) {
+            move -r 0 4 0 $each;
+            rotate 90 0 0 $each;
+        }
+        else {
+            move -r 0 1 0 $each;
+            rotate 90 0 0 $each;
+        }
+        $Counter = $Counter + 1;
+    }
+}
+
+
+
+
+//Cycle Garden Props 1
+//Global variable
+global string $Donut[];
+
+//Defined procedure for Thing
+global proc Thing() {
+    // create Torus
+    global string $Donut[];
+    $Donut = `polyTorus -name "Kyojuro Rengoku"`;
+}
+
+//Define procedure for Akaza Kebab Master
+global proc Akaza() {
+    global string $Donut[];
+    rotate 0 0 90;
+    select -tgl Kyojuro_Rengoku.f[96:99];
+    select -tgl Kyojuro_Rengoku.f[80:81];
+    move -r -0.5 -2 0 ;
+   
+}
+
+
+//Cycle Garden Props 2
+global proc createCube() {
+    // Creates a cube
+    global string $happyCube[]; 
+    $happyCube = `polyCube -name "happyLittleCube"`;
+
+string $shader = `shadingNode -asShader lambert -name "redLambert"`;
+setAttr ($shader + ".color") -type double3 1 0 0;
+
+string $shadingGroup = `sets -renderable true -noSurfaceShader true -empty -name ($shader + "SG")`;
+connectAttr -f ($shader + ".outColor") ($shadingGroup + ".surfaceShader");
+
+select $happyCube[0];
+sets -e -forceElement $shadingGroup $happyCube[0];
+}
+
+// Build the window
+window -title "Random House Generator" -widthHeight 200 100 myAmazingUI;
+columnLayout -adjustableColumn true -rowSpacing 10;
+    button -label "Make Random Plot" -command "buildHouse()";
+
+setParent ..;
+
+// Show the window
+showWindow myAmazingUI;
